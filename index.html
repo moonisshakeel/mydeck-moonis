@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Slidify</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Slidify">
+  <meta name="author" content="Moonis Shakeel">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Slidify</h1>
+    <h2>Histogram</h2>
+    <p>Moonis Shakeel<br/>Assistant Professor (Senior Grade)</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Slidifying My First Shiny Web App</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Histogram</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>A histogram is created when the data is quantitative in nature.</p>
+
+<p>Go to - <a href="https://moonisshakeel.shinyapps.io/shiny">https://moonisshakeel.shinyapps.io/shiny</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Slider</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>A SLIDER is also created above to increase or decrease the number of bins of the histogram. The minimum number of bins allowed is 10 and maximum is 100. The histogram plot is reactive as it re-executes autumatically when the value on the Slider changes.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>R Code (server.R)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>library(shiny)</p>
+
+<h1>Define server logic required to draw a histogram</h1>
+
+<p>shinyServer(function(input, output) {</p>
+
+<p>output$distPlot &lt;- renderPlot({
+    x    &lt;- faithful[, 2]  # Old Faithful Geyser data
+    bins &lt;- seq(min(x), max(x), length.out = input$bins + 1)</p>
+
+<p>})</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>R Code (ui.R)</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>library(shiny)</p>
+
+<h1>Define UI for application that draws a histogram</h1>
+
+<p>shinyUI(fluidPage(</p>
+
+<p># Application title
+  titlePanel(&quot;Histogram!&quot;),</p>
+
+<p># Sidebar with a slider input for the number of bins
+  sidebarLayout(
+    sidebarPanel(
+      sliderInput(&quot;bins&quot;,
+                  &quot;Number of bins:&quot;,
+                  min = 10,
+                  max = 100,
+                  value = 25),</p>
+
+<pre><code>    h2(&quot;Histogram&quot;),
+    p(&quot;A histogram is created when the data is quantitative in nature.&quot;),
+    h3(&quot;Slider&quot;),
+    p(&quot;A SLIDER is also created above to increase or decrease the number of bins of the histogram. The minimum number of bins allowed is 10 and maximum is 100. The histogram plot is reactive as it re-executes autumatically when the value on the Slider changes &quot;)
+    ),
+# Show a plot of the generated distribution
+mainPanel(
+  plotOutput(&quot;distPlot&quot;),
+  p(&quot;The histogram displays the data of the second variable of the faithful dataset present in the R software.&quot;)
+)
+</code></pre>
+
+<p>)
+))</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Slidifying My First Shiny Web App'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Histogram'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Slider'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='R Code (server.R)'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='R Code (ui.R)'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='NA'>
+         6
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
